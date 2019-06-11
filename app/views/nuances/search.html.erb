@@ -1,0 +1,24 @@
+<%# app/views/nuances/search.html.erb %>
+<%# end %>
+
+<h2>検索結果</h2>
+
+<table class="table table-list">
+
+<% if @nuances.present? %>
+  <div class="container">
+    <% @nuances.each do |nuance| %>
+      <div class="posts-index-item">
+      <table border="1">
+        <tr>
+          <td><%= nuance.number %></td>
+          <%= image_tag "/fabrics/#{nuance.id}.jpg", :size =>'320x240' %>
+          <%= link_to("詳細", "/fabrics/#{nuance.id}") %>
+        </tr>
+      </table>
+      <% end %>
+  </div>
+<% end %>
+
+
+</table>

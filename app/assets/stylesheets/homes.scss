@@ -1,0 +1,16 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.nav li{
+    padding:0 10px ;
+}
+.social-network li{
+    text-decoration:none;
+    display:inline-block;
+    padding:0 10px ;
+}
+.footer [class^='col-sm']{
+    margin:10px 0;
+   vertical-align:middle;
+}

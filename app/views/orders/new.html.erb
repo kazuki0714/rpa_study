@@ -1,0 +1,30 @@
+<%= form_tag("/customers/#{@customer.id}/orders/create",{multipart: true}) do %>
+
+<h1>スワッチ登録</h1>
+<p>以下の顧客のPICKUPスワッチを登録します。</p>
+
+<p>会社名：<%= @customer.company %></p><br>
+<p>お客様名：<%= @customer.name %></p><br>
+<p>担当者：<%= @customer.staff %></p><br>
+
+<p>
+  <select name="collection" required>
+    <option value="vol.1">vol.1</option>
+    <option value="vol.2">vol.2</option>
+    <option value="vol.3">vol.3</option>
+  </select>
+</p>
+
+
+<p>登録するコレクションを選んでください</p>
+
+<p>スワッチ1</p>
+
+<input name="number" placeholder="品番を入力してください"><br>
+
+<input name="note" placeholder="備考"><br>
+
+
+<p><input type="submit" value="登録"></p>
+
+<% end %>

@@ -1,0 +1,64 @@
+<!-- app/views/nuances/index.html.erb -->
+
+<h1>最適テキスタイル検索</h1>
+<!-- /nuances/search に移動 -->
+<%= form_tag nuances_search_path, :method => 'get' do %>
+
+<table class="table table-header-rotated">
+  <thead>
+    <tr>
+      <!-- First column header is not rotated -->
+      <th></th>
+      <!-- Following headers are rotated -->
+      <th class="rotate"><div><span>---</span></div></th>
+        <th class="rotate"><div><span>1</span></div></th>
+        <th class="rotate"><div><span>2</span></div></th>
+        <th class="rotate"><div><span>3</span></div></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- でデータを取得 -->
+    <tr>
+      <th class="row-header">固さ</th>
+      <td><input checked="checked" name="hardness" type="radio" value=0 ></td>
+      <td><input name="hardness" type="radio" value=1 ></td>
+      <td><input name="hardness" type="radio" value=2 ></td>
+      <td><input name="hardness" type="radio" value=3 ></td>
+      </tr>
+    <tr>
+      <th class="row-header">厚さ</th>
+      <td><input checked="checked" name="thickness" type="radio" value=0 ></td>
+      <td><input name="thickness" type="radio" value=1 ></td>
+      <td><input name="thickness" type="radio" value=2 ></td>
+      <td><input name="thickness" type="radio" value=3 ></td>
+    </tr>
+    <tr>
+      <th class="row-header">光沢度</th>
+      <td><input checked="checked" name="brightness" type="radio" value=0 ></td>
+      <td><input name="brightness" type="radio" value=1 ></td>
+      <td><input name="brightness" type="radio" value=2 ></td>
+      <td><input name="brightness" type="radio" value=3 ></td>
+    </tr>
+  </tbody>
+</table>
+
+  <%= submit_tag '検索', :name => nil %>
+<% end %>
+
+<!-- fabric.controller.rbを参照 -->
+<div class="container">
+
+  <% @fabrics.each.with_index(1) do |fabric, i| %>
+  <div class="posts-index-item">
+
+<table border="1">
+<tr>
+  <td><%= fabric.number %></td>
+  <%= image_tag "/fabrics/#{fabric.id}.jpg", :size =>'320x240' %>
+  <%= link_to("詳細", "/fabrics/#{fabric.id}") %>
+</tr>
+</table>
+
+<% end %>
+</div>

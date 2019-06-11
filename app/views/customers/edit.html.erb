@@ -1,0 +1,34 @@
+<!-- app/views/customers/edit.html.erb -->
+
+<div class="main customers-new">
+  <div class="container">
+    <h1 class="form-heading">編集フォーム</h1>
+  </div>
+
+  <%= form_tag("/customers/#{@customer.id}/update",{multipart: true}) do %>
+
+  <div class="form">
+      <div class="form-body">
+        <p>会社名</p><br>
+        <textarea name="company"><%= @customer.company %></textarea><br>
+
+        <p>業態</p><br>
+        <textarea name="category"><%= @customer.category %></textarea><br>
+
+        <p>お客様名</p><br>
+        <textarea name="name"><%= @customer.name %></textarea><br>
+
+        <p>担当者</p><br>
+        <textarea name="staff"><%= @customer.staff %></textarea><br>
+
+        <p>備考</p><br>
+        <textarea name="note"><%= @customer.note %></textarea><br>
+
+        <p>名刺</p>
+        <input name="name_card" type="file">
+
+        <input type="submit" value="更新">
+      </div>
+  </div>
+  <% end %>
+</div>

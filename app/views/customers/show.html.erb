@@ -1,0 +1,120 @@
+<!-- app/views/customers/show.html.erb -->
+<!--Bootstrap４に必要なCSSとJavaScriptを読み込み-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+
+<h1> 顧客詳細</h1>
+
+<div class="main customers-show">
+<%# 顧客情報を登録したら表示される %>
+
+  <div class="container">
+    <div class="customers-show-item">
+
+    <p>会社名：<%= @customer.company %></p><br>
+    <p>お客様名：<%= @customer.name %></p><br>
+    <p>担当者：<%= @customer.staff %></p><br>
+
+    <!-- タブボタン部分 -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="#tab1" class="nav-link" data-toggle="tab">PICK UP スワッチ</a>
+  </li>
+  <li class="nav-item">
+    <a href="#tab2" class="nav-link" data-toggle="tab">詳細</a>
+  </li>
+</ul>
+
+  <!--タブのコンテンツ部分-->
+<div class="tab-content">
+  <div id="tab1" class="tab-pane active">
+    <% @customer.orders.each.with_index(1)  do |order, i| %>
+
+    <div class="customers-order-item">
+      <table border="1">
+        <tr>
+          <th>No</th>
+          <th>Vol</th>
+          <th>品番</th>
+          <th>出荷状況</th>
+        </tr>
+
+        <tr>
+          <td><%= i %></td>
+          <td><%= order.collection %></td>
+          <td><%= order.number %></td>
+          <!DOCTYPE html>
+        <style>
+        .btn
+        {
+            display: block;
+            width: 96px;
+            height: 32px;
+            line-height: 32px;
+            background-color: #3692ff;
+            color: #fff;
+            text-align: center;
+        }
+
+        .btn.active {
+            background-color: #ccc;
+        }
+
+        .btn > span:last-of-type,
+        .btn.active > span:first-of-type
+        {
+            display: none;
+        }
+
+        .btn.active > span:last-of-type {
+            display: inline;
+        }
+        </style>
+
+        <script>
+        $(function(){
+            $('.btn').on('click', function(event){
+                event.preventDefault();
+                $(this).toggleClass('active');
+            });
+        });
+        </script>
+        <td><a class="btn" href="#">
+            <span>未出荷</span>
+            <span>発送済</span>
+        </a></td>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="tab2" class="tab-pane">
+    <p>業態：<%= @customer.category %></p><br>
+    <p>部署：<%= @customer.department %></p><br>
+    <p>TEL：<%= @customer.telephone %></p><br>
+    <p>FAX：<%= @customer.fax %></p><br>
+    <p>携帯番号：<%= @customer.cell_phone %></p><br>
+    <p>メール：<%= @customer.mail_address %></p><br>
+    <p>備考：<%= @customer.note %></p><br>
+    <p>名刺：
+        <%= image_tag "/images/#{@customer.id}.jpg", :size =>'320x240'%>
+  </div>
+</div>
+
+    <div class="customer-menus">
+        <%= link_to("編集", "/customers/#{@customer.id}/edit") %>
+        <%= link_to("削除", "/customers/#{@customer.id}/destroy",{method:"post"}) %>
+
+    </div>
+    <%= link_to("スワッチを追加", "/customers/#{@customer.id}/orders/new") %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<!-- app/views/customers/new.html.erb -->
+
+<%= form_tag("/customers/create",{multipart: true}) do %>
+
+<p>会社名</p>
+<input name="company">
+
+<p>
+  <select name="category" required>
+    <option value="">業態を選択してください</option>
+    <option value="商社">商社</option>
+    <option value="問屋">問屋</option>
+    <option value="メーカー">メーカー</option>
+    <option value="アパレル">アパレル</option>
+    <option value="産元">産元</option>
+  </select>
+</p>
+
+<p>部署</p>
+<input name="department">
+
+<p>お客様名</p>
+<input name="name">
+
+<p>担当者</p>
+<input name="staff">
+
+<p>備考</p>
+<input name="note">
+
+<p>名刺</p>
+<input name="name_card" type="file">
+
+
+<p><input type="submit" value="登録"></p>
+
+<% end %>

@@ -1,0 +1,98 @@
+<%# app/views/fabrics/show.html.erb #%>
+
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+
+    <p>品番：<%= @fabric.number %></p><br>
+    <p>業態：<%= @fabric.category %></p><br>
+    <p>ブランド：<%= @fabric.brand %></p><br>
+    <p>打込：<%= @fabric.uchikomi %></p><br>
+    <p>組織：<%= @fabric.organization %></p><br>
+    <p>規格：<%= @fabric.standard %></p><br>
+    <p>生地画像：<%= @fabric.image_fabric %></p><br>
+    <%= image_tag "/fabrics/#{@fabric.id}.jpg", :size =>'320x240' %>
+
+    </div>
+
+
+<!-- チャート描画キャンバス -->
+<div><canvas id="myChart" style="position: relative; height:50px; width:100px"></canvas></div>
+
+<script>
+
+  // 色の設定
+  var colorSet = {
+    red: 'rgb(255, 99, 132)',
+    orange: 'rgb(255, 159, 64)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    purple: 'rgb(153, 102, 255)',
+    grey: 'rgb(201, 203, 207)'
+  };
+
+  // 色のRGB変換
+  var color = Chart.helpers.color;
+
+  /*
+   * チャートの初期設定
+   */
+  var config = {
+    type: 'radar',
+    data: {
+      labels: ["固さ", "暑さ", "光沢度"],
+      datasets: [{
+        backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
+        borderColor: colorSet.red,
+        pointBackgroundColor: colorSet.red,
+        data: [<%= @fabric.hardness %>, <%= @fabric.thickness %>, <%= @fabric.brightness %>]
+      },]
+    },
+    options: {
+      animation:false,
+      showTooltips: false,
+      legend: { position: 'bottom' },
+      title: {
+        display: true,
+        fontSize:20,
+        fontColor:'#666',
+        text: '生地レーダーチャート'
+      },
+      scale: {
+        display: true,
+        pointLabels: {
+          fontSize: 15,
+          fontColor: colorSet.yellow
+        },
+        ticks: {
+          display: true,
+          fontSize: 20,
+          fontColor: colorSet.green,
+          min: 0,
+          max: 3,
+          stepSize: 1,
+          beginAtZero: true
+        },
+        gridLines: {
+          display: true,
+          color: colorSet.yellow
+        }
+      }
+    }
+  };
+
+  /*
+   * チャートの作成
+   */
+  var myRadar = new Chart($("#myChart"), config);
+
+  </script>
+
+    <div class="post-menus">
+        <%= link_to("編集", "/fabrics/#{@fabric.id}/edit") %>
+        <%= link_to("削除", "/fabrics/#{@fabric.id}/destroy",{method:"post"}) %>
+
+    </div>
+  </div>
+</div>

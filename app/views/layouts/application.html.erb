@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>test-Kowa</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+
+  <footer class="footer">
+    <div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-sm-4 pull-left1">
+          <ul class="nav nav-pills.nav">
+            <li><a href ="/">ホーム</a></li>
+            <li><a href ="/customers">顧客リスト</a></li>
+            <li>ブランド</li>
+            <li>メニュー</li>
+          </ul>
+        </div>
+
+    </div>
+    </div>
+  </footer>
+
+</html>
