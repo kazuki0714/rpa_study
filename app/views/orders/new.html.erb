@@ -24,6 +24,51 @@
 
 <input name="note" placeholder="備考"><br>
 
+<!-- JS ここから貼り付け-->
+<style>
+.btn
+{
+    display: block;
+    width: 96px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #3692ff;
+    color: #fff;
+    text-align: center;
+}
+
+.btn.active {
+    background-color: #ccc;
+}
+
+.btn > span:last-of-type,
+.btn.active > span:first-of-type
+{
+    display: none;
+}
+
+.btn.active > span:last-of-type {
+    display: inline;
+}
+</style>
+
+<script>
+$(function(){
+    $('.btn').on('click', function(event){
+        event.preventDefault();
+        $(this).toggleClass('active');
+    });
+});
+</script>
+<td><a class="btn" href="#">
+    <span name="delivery" value="0" >未出荷</span>
+    <span name="delivery" value="1" >発送済</span>
+</a></td>
+<!-- ここまで-->
+</tr>
+</table>
+</div>
+
 
 <p><input type="submit" value="登録"></p>
 

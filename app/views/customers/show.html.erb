@@ -6,9 +6,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
 <h1> 顧客詳細</h1>
 
@@ -50,46 +48,9 @@
           <td><%= i %></td>
           <td><%= order.collection %></td>
           <td><%= order.number %></td>
-          <!DOCTYPE html>
-        <style>
-        .btn
-        {
-            display: block;
-            width: 96px;
-            height: 32px;
-            line-height: 32px;
-            background-color: #3692ff;
-            color: #fff;
-            text-align: center;
-        }
+          <td><%= order.delivery %></td>
 
-        .btn.active {
-            background-color: #ccc;
-        }
-
-        .btn > span:last-of-type,
-        .btn.active > span:first-of-type
-        {
-            display: none;
-        }
-
-        .btn.active > span:last-of-type {
-            display: inline;
-        }
-        </style>
-
-        <script>
-        $(function(){
-            $('.btn').on('click', function(event){
-                event.preventDefault();
-                $(this).toggleClass('active');
-            });
-        });
-        </script>
-        <td><a class="btn" href="#">
-            <span>未出荷</span>
-            <span>発送済</span>
-        </a></td>
+        <!-- ここに切り取ったJSを入れる-->
         </tr>
       </table>
     </div>
